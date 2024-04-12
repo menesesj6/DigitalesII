@@ -15,7 +15,7 @@ module testbench1;
 // Cables de conexion entre modulos
 wire arrive_sensor, leave_sensor, validation, 
     pinAlarm, blockAlarm, gate_open, 
-    gate_close, gate_block;
+    gate_close, gate_block, enter;
 
 // Net de 8 bits para la contrasena
 wire [7:0] password;
@@ -35,7 +35,8 @@ Tester tester (
     .b_alarm (blockAlarm),
     .gate_open (gate_open),
     .gate_close (gate_close),
-    .gate_block (gate_block)
+    .gate_block (gate_block),
+    .enter (enter)
 );
 
 // Instanciar el modulo de verificacion de contrasena 
@@ -43,7 +44,8 @@ passwordVer P1 (
     .password (password),
     .arrivalSensor (arrive_sensor),
     .validity (validation),
-    .alarm (pinAlarm)
+    .alarm (pinAlarm),
+    .enter (enter)
 );
 
 // Instanciar el modulo de control de la compuerta

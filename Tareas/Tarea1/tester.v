@@ -13,10 +13,11 @@ module Tester(
     b_alarm,
     gate_open,
     gate_close,
-    gate_block);
+    gate_block,
+    enter);
 
 // Inicializar entradas y salidas
-output reg asensor, lsensor;
+output reg asensor, lsensor, enter;
 output reg [7:0] password;
 input wire p_alarm, b_alarm, gate_open, gate_close, gate_block;
 
@@ -26,9 +27,12 @@ initial begin
     password = 8'b00000000;
     asensor = 0;
     lsensor = 0;
+    enter = 0;
     // Prueba 1
     #10 asensor = 1;
     #5 password = 8'b00101010;
+    enter = 1;
+    #1 enter = 0;
     #5 asensor = 0;
     password = 8'b00000000;
     #5 lsensor = 1;
@@ -37,8 +41,14 @@ initial begin
     // Prueba 2
     #20 asensor = 1;
     #5 password = 8'b00101110;
+    enter = 1;
+    #1 enter = 0;
     #5 password = 8'b10101010;
+    enter = 1;
+    #1 enter = 0;
     #5 password = 8'b00101010;
+    enter = 1;
+    #1 enter = 0;
     #5 asensor = 0;
     password = 8'b00000000;
     #5 lsensor = 1;
@@ -47,9 +57,19 @@ initial begin
     // Prueba 3
     #20 asensor = 1;
     #5 password = 8'b00101110;
+    enter = 1;
+    #1 enter = 0;
+    #5 password = 8'b00101110;
+    enter = 1;
+    #1 enter = 0;
+    #5 password = 8'b00101110;
+    enter = 1;
+    #1 enter = 0;
     #5 password = 8'b10101010;
-    #5 password = 8'b10100011;
-    #5 password = 8'b10101111;
+    enter = 1;
+    #1 enter = 0;
+    // #5 password = 8'b10100011;
+    // #5 password = 8'b10101111;
     #5 password = 8'b00101010;
     #5 asensor = 0;
     password = 8'b00000000;
@@ -62,10 +82,16 @@ initial begin
     #10 asensor = 0;
     #10 lsensor = 0;
     #5 password = 8'b00000001;
+    enter = 1;
+    #1 enter = 0;
     #10 password = 8'b00101010;
+    enter = 1;
+    #1 enter = 0;
     #5 password = 8'b00000000;
     #10 asensor = 1;
     #5 password = 8'b00101010;
+    enter = 1;
+    #1 enter = 0;
     #5 asensor = 0;
     #5 lsensor = 1;
     #10 lsensor = 0;

@@ -10,17 +10,18 @@ module passwordVer(
     password,
     arrivalSensor, 
     alarm, 
-    validity
+    validity,
+    enter
     ); 
 
 // Net de 8 bits para la contrasena
 input wire [7:0] password; 
 
 // Definicion de inputs y outputs
-input arrivalSensor;
+input arrivalSensor, enter;
 output alarm,  validity;
 
-wire arrivalSensor;
+wire arrivalSensor, enter;
 reg alarm, validity;
 
 // Contrasena esperada, carne: C14742
@@ -37,23 +38,22 @@ always @(*) begin
     end else if (arrivalSensor == 0) begin
         validity = 0;
         alarm = 0;
-    end else if (arrivalSensor == 1)begin 
+    end else if (arrivalSensor == 1 && enter == 1)begin 
         if (password == rightPass) begin
             validity = 1; // Se envia que todo bien al controlador de la compuerta
             alarm = 0; // NO se activa la alarma de pin incorrecto
             counter = 0; // Se reinicia el contador
-        end else if (password != rightPass && password != 8'b00000000) begin // Conrasena distinta
+        end else if (password != rightPass && enter == 1) begin // Conrasena distinta
             validity = 0;
             counter += 1; // Si se falla, sumar un intento fallido al contador
-        end else if(password != rightPass && password == 8'b00000000)begin // COntrasena en 0 es el caso base
-            validity = 0; // Si se falla, sumar un intento fallido al contador
-        end
+        end 
     end
 
     // COntrasena correcta siempre activa, incluso sin sensor de llegada
     if (password == rightPass) begin
         validity = 1;
         alarm = 0;
+        counter = 0;
     end
 
     // Activar alarma de pin incorrecto mas de 3 veces
@@ -121,12 +121,12 @@ always @(*) begin
     
     // CUando la contrasena estaba mal
     end else if(passValid == 0) begin
-        if (enterSensor == 0 && arrival_Sensor == 0)begin
+        if (enterSensor == 0 && arrival_Sensor == 0 && block == 0)begin
             gateClose = gateClose;
             gateOpen = gateOpen;
             block = block;
             blockAlarm = blockAlarm;
-        end else if(enterSensor == 1 && arrival_Sensor == 1) begin
+        end  else if(enterSensor == 1 && arrival_Sensor == 1) begin
             gateClose = 0;
             gateOpen = 0;
             block = 1;
