@@ -60,7 +60,6 @@ always @(*) begin
     if (counter >= 3) begin
         validity = 0; // Senal en bajo al controlador de la compuerta
         alarm = 1; // Activa la alarma
-        counter = 0; // Se reinicia el contador de intentos fallidos
     end 
 end
 endmodule

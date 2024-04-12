@@ -63,7 +63,15 @@ initial begin
     #10 lsensor = 0;
     #5 password = 8'b00000001;
     #10 password = 8'b00101010;
-    #20 $finish;
+    #5 password = 8'b00000000;
+    #10 asensor = 1;
+    #5 password = 8'b00101010;
+    #5 asensor = 0;
+    #5 lsensor = 1;
+    #10 lsensor = 0;
+
+    // Terminar simulacion
+    #10 $finish;
 end
 
 endmodule
