@@ -68,8 +68,6 @@ initial begin
     #5 password = 8'b10101010;
     enter = 1;
     #1 enter = 0;
-    // #5 password = 8'b10100011;
-    // #5 password = 8'b10101111;
     #5 password = 8'b00101010;
     #5 asensor = 0;
     password = 8'b00000000;

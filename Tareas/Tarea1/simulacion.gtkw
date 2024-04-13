@@ -1,0 +1,34 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Sat Apr 13 15:33:06 2024
+[*]
+[dumpfile] "/home/menesesj6/DigitalesII/Tareas/Tarea1/simulacion.vcd"
+[dumpfile_mtime] "Sat Apr 13 15:31:26 2024"
+[dumpfile_size] 2107
+[savefile] "/home/menesesj6/DigitalesII/Tareas/Tarea1/simulacion.gtkw"
+[timestart] 0
+[size] 1850 851
+[pos] -51 -51
+*-5.126089 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] testbench1.
+[sst_width] 48
+[signals_width] 134
+[sst_expanded] 0
+[sst_vpaned_height] 231
+@28
+testbench1.arrive_sensor
+testbench1.leave_sensor
+testbench1.gate_open
+testbench1.gate_close
+testbench1.gate_block
+@22
+testbench1.password[7:0]
+@28
+testbench1.enter
+@420
+testbench1.P1.counter
+@28
+testbench1.pinAlarm
+testbench1.blockAlarm
+[pattern_trace] 1
+[pattern_trace] 0
