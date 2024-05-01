@@ -82,7 +82,6 @@ case (state)
     d:
         if (password != corrPass && enter) nextstate = e;
         else if (password == corrPass && enter) nextstate = c;
-        else nextstate = d;
 
     e:
         if (password != corrPass && enter) begin
