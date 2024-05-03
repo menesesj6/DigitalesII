@@ -1,6 +1,7 @@
-`include "modules_synch.v"
-`include "tester_synch.v"
-
+`timescale 1s/1ps
+`include "controller_synth.v"
+`include "cmos_delay_cells.v"
+`include "tester.v"
 // Definir el testbench
 module testbench1;
 
@@ -15,7 +16,7 @@ wire [7:0] password;
 
 // Dumps para el GTKWave
 initial begin
-    $dumpfile("simulacion_synch.vcd");
+    $dumpfile("sim.vcd");
     $dumpvars;
 end
 

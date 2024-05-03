@@ -1,0 +1,6 @@
+read_verilog controller.v 
+proc; opt
+fsm; opt
+memory; opt
+techmap; opt
+write_verilog controller_synth.v
