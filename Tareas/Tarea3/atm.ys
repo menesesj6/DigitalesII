@@ -1,0 +1,9 @@
+read_verilog atm.v 
+proc; opt; fsm; opt; memory; opt
+techmap; opt
+dfflibmap -liberty ./cmos_cells.lib
+opt
+abc -liberty ./cmos_cells.lib
+opt
+clean
+write_verilog atm_synth.v

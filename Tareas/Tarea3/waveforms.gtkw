@@ -1,0 +1,47 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Fri May 17 00:37:09 2024
+[*]
+[dumpfile] "/home/menesesj6/DigitalesII/Tareas/Tarea3/results.vcd"
+[dumpfile_mtime] "Fri May 17 00:35:25 2024"
+[dumpfile_size] 13317
+[savefile] "/home/menesesj6/DigitalesII/Tareas/Tarea3/waveforms.gtkw"
+[timestart] 0
+[size] 1850 881
+[pos] -38 -38
+*-6.589058 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] testbench.
+[sst_width] 48
+[signals_width] 166
+[sst_expanded] 0
+[sst_vpaned_height] 241
+@28
+testbench.clk
+testbench.rst
+@22
+testbench.atm.state[6:0]
+@28
+testbench.receivedCard
+@22
+testbench.pin[15:0]
+testbench.digit[3:0]
+@28
+testbench.stbDigit
+testbench.transType
+testbench.stbTransaction
+@22
+testbench.amount[31:0]
+@28
+testbench.stbAmount
+@22
+testbench.atm.balance[63:0]
+@28
+testbench.balanceUpdated
+testbench.incorrectPin
+testbench.warning
+testbench.block
+testbench.giveMoney
+testbench.insufficientFunds
+testbench.atm.tries[1:0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -22,11 +22,11 @@ module ATM(
 reg next_balanceUpdated, next_giveMoney, next_incorrectPin, next_insufficientFunds, next_warning, next_block;
 
 // Registro de balance de 64 bits
-reg [63:0] balance = 64'b0000_0000_0000_0000_0000_0000_0000_0000_0101_1010_1101_1011_0110_1101_1111_1101;
+reg [63:0] balance;
 reg [63:0] next_balance;
 
 // Registro con intentos de pin
-reg [1:0] tries = 2'b11;
+reg [1:0] tries;
 reg [1:0] next_tries;
 
 // Registro de estados y proximo estado
@@ -34,13 +34,13 @@ reg [6:0] state;
 reg [6:0] next_state;
 
 // Registros de los digitos ingresados
-reg [2:0] digitCount = 3'b001;
-reg [2:0] next_digitCount;
+reg [2:0] digitCount;
 reg [3:0] firstDigit;
 reg [3:0] secondDigit;
 reg [3:0] thirdDigit;
 reg [3:0] fourthDigit;
 
+reg [2:0] next_digitCount;
 reg [3:0] next_firstDigit;
 reg [3:0] next_secondDigit;
 reg [3:0] next_thirdDigit;
@@ -60,7 +60,9 @@ parameter finalized = 7'b1000_000;
 always @(posedge clock) begin
     if(~reset || ~receivedCard) begin
         state <= idle;
-        tries <= 2'b11;
+        tries <= 2'b00;
+        digitCount <= 3'b000;
+        balance <= 64'b0000_0000_0000_0000_0000_0000_0000_0000_0101_1010_1101_1011_0110_1101_1111_1101;
     end else begin
         // Pasar proximo estado
         state <= next_state;
@@ -116,7 +118,10 @@ always @(*) begin
                 next_warning = 0;
                 next_block = 0;
                 // Caso donde se detecta tarjeta
-                if(receivedCard) next_state = cardDetected;
+                if(receivedCard) begin
+                    next_state = cardDetected;
+                    next_digitCount = 3'b001;
+                end
             end
 
         // Tarjeta detectada
@@ -150,14 +155,14 @@ always @(*) begin
         // Pin erroneo
         wrongPin:
             begin
-                next_tries = tries - 2'b01;
-                if(tries == 2'b00) begin
+                next_tries = tries + 2'b01;
+                if(tries == 2'b11) begin
                     next_block = 1;
                     next_state = blockedSystem;
-                end else if (tries == 2'b01) begin
+                end else if (tries == 2'b10) begin
                     next_warning = 1;
                     next_state = cardDetected;
-                end else if (tries == 2'b10) begin
+                end else if (tries == 2'b01) begin
                     next_incorrectPin = 1;
                     next_state = cardDetected;
                 end
@@ -167,6 +172,7 @@ always @(*) begin
         blockedSystem:
             begin
             end
+            
         // Pin correcto
         correctPin:
             begin

@@ -5,11 +5,14 @@ module Tester(
     output reg enterDigit, enterAmount, enterTrans,
     output reg [3:0] inputDigit,
     output reg [15:0] cardPin,
-    output reg [31:0] inputAmount
+    output reg [31:0] inputAmount,
+
+    input wire bU, gM, iP, iF, w, b 
 );
 
 always begin
-#0.5 clk = ~clk;
+    // Cambios del clock
+    #0.5 clk = ~clk;
 end
 
 initial begin
@@ -27,14 +30,18 @@ initial begin
     */
     inputAmount = 32'b0000_0000_0000_0000_0000_0000_0000_0000;
     clk = 0;
-    rst = 1;
-    #0.5 rst = 0;
-    #0.5 rst = 1;
     insertCard = 0;
     transaction = 0;
     enterTrans = 0;
     enterAmount = 0;
+    inputDigit = 4'b0000;
     enterDigit = 0;
+    rst = 1;
+
+    // Pulso en reset para estado inicial
+    #0.5 rst = 0;
+    #2 rst = 1;
+    
 
     /*
     ----------------------------- 
@@ -75,7 +82,7 @@ initial begin
     #2 enterAmount = 0;
 
     // Sacar tarjeta
-    #1 insertCard = 0;
+    #5 insertCard = 0;
 
     /*
     ----------------------------- 
@@ -116,7 +123,7 @@ initial begin
     #2 enterAmount = 0;
 
     // Sacar tarjeta
-    #1 insertCard = 0;
+    #5 insertCard = 0;
 
     /*
     ----------------------------- 
@@ -157,7 +164,7 @@ initial begin
     #2 enterAmount = 0;
 
     // Sacar tarjeta
-    #1 insertCard = 0;
+    #5 insertCard = 0;
 
     /*
     ----------------------------- 
@@ -238,7 +245,7 @@ initial begin
     #2 enterAmount = 0;
 
     // Sacar tarjeta
-    #1 insertCard = 0;
+    #5 insertCard = 0;
 
     /*
     ----------------------------- 
@@ -373,7 +380,7 @@ initial begin
     #2 enterAmount = 0;
 
     // Sacar tarjeta
-    #1 insertCard = 0;
+    #5 insertCard = 0;
 
     #50 $finish;
 

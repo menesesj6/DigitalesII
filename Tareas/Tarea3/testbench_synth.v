@@ -1,4 +1,5 @@
-`include "atm.v"
+`include "atm_synth.v"
+`include "cmos_cells.v"
 `include "tester.v"
 
 module testbench;

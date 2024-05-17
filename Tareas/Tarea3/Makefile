@@ -3,16 +3,26 @@ CC = iverilog
 
 # Sources
 SOURCE = testbench.v
+SOURCE_SYNTH = testbench_synth.v
 
 # Ejecutable
 TARGET = salida
 
-# Script de sintesis
+# Comandos Yosys
 YSFILE = atm.ys
 
 # Regla de compilacion y ejecucion
-$(TARGET): $(SOURCE) $(YSFILE)
+conductual: $(SOURCE) $(YSFILE)
+	$(CC) -o $(TARGET) $(SOURCE)
+	vvp $(TARGET)
+	gtkwave waveforms.gtkw
+
+structural: $(SOURCE) $(YSFILE)
 	yosys -s $(YSFILE)
-	$(CC) -o $@ $(SOURCE)
-	vvp $@
-	gtkwave resultados.vcd
+	$(CC) -o $(TARGET) $(SOURCE_SYNTH)
+	vvp $(TARGET)
+	gtkwave waveforms.gtkw
+
+clean:
+	rm atm_synth.v results.vcd salida
+
