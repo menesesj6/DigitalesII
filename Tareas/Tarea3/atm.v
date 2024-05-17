@@ -59,6 +59,8 @@ parameter finalized = 7'b1000_000;
 // Memoria de estados y salidas con FFs
 always @(posedge clock) begin
     if(~reset || ~receivedCard) begin
+        // Se elimina el bloqueo unicamente con reset
+        if (state == blockedSystem && ~receivedCard && reset) state <= blockedSystem;
         state <= idle;
         tries <= 2'b00;
         digitCount <= 3'b000;
