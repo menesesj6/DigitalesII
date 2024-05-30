@@ -1,0 +1,78 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Thu May 30 16:43:28 2024
+[*]
+[dumpfile] "/home/menesesj6/DigitalesII/Tareas/Tarea4/SPI_results.vcd"
+[dumpfile_mtime] "Thu May 30 16:42:57 2024"
+[dumpfile_size] 20870
+[savefile] "/home/menesesj6/DigitalesII/Tareas/Tarea4/waveforms.gtkw"
+[timestart] 0
+[size] 1850 881
+[pos] -1 -1
+*-7.394253 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
+[sst_width] 48
+[signals_width] 188
+[sst_expanded] 0
+[sst_vpaned_height] 241
+@200
+-TB
+@28
+tb.CLK
+tb.RST
+tb.SCK
+tb.CS
+tb.CKP
+tb.CPH
+tb.TRANS_STB
+tb.MOSI
+tb.MOSISlave
+tb.MOSISlave2
+@29
+tb.MISO
+@200
+-MASTER
+@22
+[color] 2
+tb.transmisor.rcvdData[15:0]
+@28
+[color] 2
+tb.transmisor.state[1:0]
+@22
+[color] 2
+tb.transmisor.bitCounter[3:0]
+@200
+-SLAVE 1
+@22
+[color] 7
+tb.receptor1.rcvdData[15:0]
+@28
+[color] 7
+tb.receptor1.state[1:0]
+@22
+[color] 7
+tb.receptor1.bitCounter[3:0]
+@200
+-SLAVE 2
+@22
+[color] 3
+tb.receptor2.rcvdData[15:0]
+@28
+[color] 3
+tb.receptor2.state[1:0]
+@22
+[color] 3
+tb.receptor2.bitCounter[3:0]
+@200
+-SLAVE 3
+@22
+[color] 6
+tb.receptor3.rcvdData[15:0]
+@28
+[color] 6
+tb.receptor3.state[1:0]
+@22
+[color] 6
+tb.receptor3.bitCounter[3:0]
+[pattern_trace] 1
+[pattern_trace] 0
