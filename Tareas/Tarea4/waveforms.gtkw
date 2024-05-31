@@ -1,18 +1,18 @@
 [*]
 [*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
-[*] Thu May 30 16:43:28 2024
+[*] Thu May 30 19:55:01 2024
 [*]
 [dumpfile] "/home/menesesj6/DigitalesII/Tareas/Tarea4/SPI_results.vcd"
-[dumpfile_mtime] "Thu May 30 16:42:57 2024"
-[dumpfile_size] 20870
+[dumpfile_mtime] "Thu May 30 19:54:48 2024"
+[dumpfile_size] 24584
 [savefile] "/home/menesesj6/DigitalesII/Tareas/Tarea4/waveforms.gtkw"
 [timestart] 0
 [size] 1850 881
 [pos] -1 -1
-*-7.394253 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-7.542966 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb.
 [sst_width] 48
-[signals_width] 188
+[signals_width] 150
 [sst_expanded] 0
 [sst_vpaned_height] 241
 @200
@@ -28,7 +28,6 @@ tb.TRANS_STB
 tb.MOSI
 tb.MOSISlave
 tb.MOSISlave2
-@29
 tb.MISO
 @200
 -MASTER
@@ -43,7 +42,7 @@ tb.transmisor.state[1:0]
 tb.transmisor.bitCounter[3:0]
 @200
 -SLAVE 1
-@22
+@23
 [color] 7
 tb.receptor1.rcvdData[15:0]
 @28

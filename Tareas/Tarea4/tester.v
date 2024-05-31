@@ -1,3 +1,10 @@
+/*
+Contenido: Modulo tester para probar el protocolo SPI
+Desarrollador: Jorge Meneses Garro
+Tarea 4 - IE0523 Circuitos Digitales II
+
+*/
+
 module Tester(
     output reg CLOCK, RESET, CKP, CPH, START
 );
@@ -58,7 +65,19 @@ initial begin
     #10 START = 1;
     #5 START = 0;
 
-    #300 $finish; 
+    /*
+    --------------------------
+    QUINTA PRUEBA: INTERRUMPIR
+    --------------------------
+    */
+    #300 CKP = 0;
+    CPH = 0;
+    #3 RESET = 1;
+    #10 START = 1;
+    #5 START = 0;
+    #100 RESET = 0;
+    #10 RESET = 1;
+    #50 $finish; 
 end
 
 endmodule

@@ -7,16 +7,19 @@ module tb;
 wire CLK, RST, TRANS_STB, MISO, MOSI, MOSISlave, MOSISlave2, CS, SCK, CKP, CPH;
 
 initial begin
+    // Arhivo vcd para GTKWave
     $dumpfile("SPI_results.vcd");
+    // Definir variables a mostrar en GTKWave
     $dumpvars(0, tb);
 end
 
 Tester tester(
+    // Estimulos al SPI
     .CLOCK(CLK),
     .RESET(RST),
     .CKP(CKP),
     .CPH(CPH),
-    .START(TRANS_STB)
+    .START(TRANS_STB) // ENTER: Banderazo de salida de transaccion
 );
 
 SPIMaster transmisor(
@@ -36,7 +39,6 @@ SPIMaster transmisor(
 SPISlave receptor1(
     // Inputs
     .clk(CLK),
-    .rst(RST),
     .CKP(CKP),
     .CPH(CPH),
     .MOSI(MOSI),
@@ -49,7 +51,6 @@ SPISlave receptor1(
 SPISlave receptor2(
     // Inputs
     .clk(CLK),
-    .rst(RST),
     .CKP(CKP),
     .CPH(CPH),
     .MOSI(MOSISlave),
@@ -62,7 +63,6 @@ SPISlave receptor2(
 SPISlave receptor3(
     // Inputs
     .clk(CLK),
-    .rst(RST),
     .CKP(CKP),
     .CPH(CPH),
     .MOSI(MOSISlave2),
